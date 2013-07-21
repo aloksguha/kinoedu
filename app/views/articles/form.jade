@@ -32,6 +32,16 @@ block content
           label.control-label(for='desc') Body
           .controls
             textarea#desc.input-xlarge(type='text', rows="5", name="body", placeholder='Enter the article description')=article.body
+        .control-group
+                     label.control-label(for='title') visibility
+                     .controls
+                      label.radio.inline
+                                input(type="radio", name="optionsRadios", id="optionsRadios1", value="option1", checked="")
+                                |public
+
+                            label.radio.inline
+                                input(type="radio", name="optionsRadios", id="optionsRadios2", value="option2")
+                                |private
 
         .control-group
           label.control-label(for='desc') Tags

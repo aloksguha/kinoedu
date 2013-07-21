@@ -43,6 +43,16 @@ block content
              .controls
               input#title.input-xlarge(type='text', name="endDate", value=article.title, placeholder='Enter the title')=article.endDate
 
+           .control-group
+             label.control-label(for='title') visibility
+             .controls
+              label.radio.inline
+                        input(type="radio", name="optionsRadios", id="optionsRadios1", value="option1", checked="")
+                        |public
+
+                    label.radio.inline
+                        input(type="radio", name="optionsRadios", id="optionsRadios2", value="option2")
+                        |private
         .control-group
           label.control-label(for='desc') Tags
           .controls

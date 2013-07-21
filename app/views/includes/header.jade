@@ -4,17 +4,16 @@ header#header
       .container
         a.brand(href='/') <b>KinoEdu</b>
         .nav-collapse.collapse
-          ul.nav
-
+          ul.nav.pull-left
+             li
+               a(href="/courses", title="Login") Courses
+             li
+               a(href="/articles", title="Login") Blogs
           ul.nav.pull-right
 
             if (req.isAuthenticated())
               li
-                a(href="/courses", title="Login") Courses
-              li
-                a(href="/articles/new", title="new article") New Course
-              li
-                a(href="/articles", title="Login") Blogs
+                a(href="/courses/new", title="new article") New Course
               li
                 a(href="/articles/new", title="new article") New Blog
               li
