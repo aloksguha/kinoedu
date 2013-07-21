@@ -10,7 +10,8 @@ var async = require('async')
  */
 
 var  home = require('../app/controllers/home')
-  ,  users = require('../app/controllers/users')
+  , courses = require('../app/controllers/courses')
+  , users = require('../app/controllers/users')
   , articles = require('../app/controllers/articles')
   , auth = require('./middlewares/authorization')
 
@@ -19,6 +20,7 @@ var  home = require('../app/controllers/home')
  */
 
 var articleAuth = [auth.requiresLogin, auth.article.hasAuthorization]
+  , courseAuth =  [auth.requiresLogin, auth.course.hasAuthorization]
 
 /**
  * Expose routes
@@ -77,7 +79,7 @@ module.exports = function (app, passport) {
 
   app.param('userId', users.user)
 
-  // article routes
+  // article/blog routes
   app.get('/articles', articles.index)
   app.get('/articles/new', auth.requiresLogin, articles.new)
   app.post('/articles', auth.requiresLogin, articles.create)
@@ -85,6 +87,17 @@ module.exports = function (app, passport) {
   app.get('/articles/:id/edit', articleAuth, articles.edit)
   app.put('/articles/:id', articleAuth, articles.update)
   app.del('/articles/:id', articleAuth, articles.destroy)
+
+
+  // article/blog routes
+  app.get('/courses', courses.index)
+  app.get('/courses/new', auth.requiresLogin, courses.new)
+  app.post('/courses', auth.requiresLogin, courses.create)
+  app.get('/courses/:id', courses.show)
+  app.get('/courses/:id/edit', courseAuth, courses.edit)
+  app.put('/courses/:id', courseAuth, courses.update)
+  app.del('/courses/:id', courseAuth, courses.destroy)
+
 
   app.param('id', articles.load)
 

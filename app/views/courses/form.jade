@@ -33,6 +33,16 @@ block content
           .controls
             textarea#desc.input-xlarge(type='text', rows="5", name="body", placeholder='Enter the article description')=article.body
 
+         .control-group
+            label.control-label(for='title') startDate
+            .controls
+              input#title.input-xlarge(type='text', name="startDate", value=article.title, placeholder='Enter the title')=article.startDate
+
+          .control-group
+             label.control-label(for='title') endDate
+             .controls
+              input#title.input-xlarge(type='text', name="endDate", value=article.title, placeholder='Enter the title')=article.endDate
+
         .control-group
           label.control-label(for='desc') Tags
           .controls

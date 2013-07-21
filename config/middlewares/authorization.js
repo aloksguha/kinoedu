@@ -37,3 +37,19 @@ exports.article = {
     next()
   }
 }
+
+/*
+ *  Course authorization routing middleware
+ */
+
+exports.course = {
+  hasAuthorization : function (req, res, next) {
+    if (req.course.user.id != req.user.id) {
+      req.flash('info', 'You are not authorized')
+      return res.redirect('/articles/'+req.course.id)
+    }
+    next()
+  }
+}
+
+
