@@ -86,9 +86,12 @@ exports.create = function (req, res) {
 
 exports.show = function (req, res) {
   var user = req.profile
+  //console.log(user);
+  console.log('-----');
+  console.log(user.name);
   res.render('users/show', {
-    title: user.name,
-    user: user
+    user: user,
+    email: user.email
   })
 }
 
