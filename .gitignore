@@ -3,7 +3,5 @@
 npm-debug.log
 node_modules/
 .monitor
-config/config.js
-config/imager.js
 Makefile
 .DS_Store
