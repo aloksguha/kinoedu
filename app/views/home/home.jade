@@ -1,0 +1,16 @@
+extends ../layouts/default
+
+block main
+  h2#heading.home= title
+block content
+    div.content
+        p#para1.home Learning is now an integral part any company. Over last few years, learning has transformed from leaps and bounds. Video Tutorial, Month long Courses, Homework , Quiz and showcase progress and certification on Social Networks are now the key essense. Forming communities around learning a set of skills is the key thing today.
+        if (!req.isAuthenticated())
+        p#para2.home
+            a.btn.btn-large.btn-success(href='/login') Sign up Today
+
+    hr
+    div.video.home <iframe width="680" height="350" src="//www.youtube.com/embed/kdUMlBf1aA4" frameborder="10"></iframe>
+    div.content
+        p#para3.home Video Instructions
+

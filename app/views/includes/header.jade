@@ -1,18 +1,22 @@
-
 header#header
   .navbar.navbar-fixed-top(role='navigation')
     .navbar-inner
       .container
-        a.brand(href='/') KinoEdu
+        a.brand(href='/') <b>KinoEdu</b>
         .nav-collapse.collapse
           ul.nav
 
           ul.nav.pull-right
-            li
-              a(href="/courses", title="Login") Courses
+
             if (req.isAuthenticated())
               li
-                a(href="/articles/new", title="new article") New
+                a(href="/courses", title="Login") Courses
+              li
+                a(href="/articles/new", title="new article") New Course
+              li
+                a(href="/articles", title="Login") Blogs
+              li
+                a(href="/articles/new", title="new article") New Blog
               li
                 a(href="/users/"+req.user.id, title="Profile") Profile
               li
@@ -20,5 +24,7 @@ header#header
             else
               li
                 a(href="/login", title="Login") Login
+
+
 
 
