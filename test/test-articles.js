@@ -9,7 +9,7 @@ var mongoose = require('mongoose')
   , app = require('../server')
   , context = describe
   , User = mongoose.model('User')
-  , Article = mongoose.model('Article')
+  , Article = mongoose.model('Courses')
   , agent = request.agent(app)
 
 var count

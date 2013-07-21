@@ -98,4 +98,8 @@ module.exports = function (app, passport) {
   var tags = require('../app/controllers/tags')
   app.get('/tags/:tag', tags.index)
 
+
+  app.get('/courses', articles.index)
+
+
 }

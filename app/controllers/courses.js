@@ -4,7 +4,7 @@
  */
 
 var mongoose = require('mongoose')
-  , Article = mongoose.model('Courses')
+  , Courses = mongoose.model('Courses')
   , utils = require('../../lib/utils')
   , _ = require('underscore')
 
@@ -15,10 +15,10 @@ var mongoose = require('mongoose')
 exports.load = function(req, res, next, id){
   var User = mongoose.model('User')
 
-  Article.load(id, function (err, article) {
+  Courses.load(id, function (err, course) {
     if (err) return next(err)
-    if (!article) return next(new Error('not found'))
-    req.article = article
+    if (!course) return next(new Error('not found'))
+    req.course = course
     next()
   })
 }
@@ -35,12 +35,12 @@ exports.index = function(req, res){
     page: page
   }
 
-  Article.list(options, function(err, articles) {
+  Courses.list(options, function(err, courses) {
     if (err) return res.render('500')
-    Article.count().exec(function (err, count) {
-      res.render('articles/index', {
-        title: 'Blogs',
-        articles: articles,
+    Courses.count().exec(function (err, count) {
+      res.render('courses/index', {
+        title: 'Course',
+        articles: courses,
         page: page + 1,
         pages: Math.ceil(count / perPage)
       })
@@ -53,9 +53,9 @@ exports.index = function(req, res){
  */
 
 exports.new = function(req, res){
-  res.render('articles/new', {
-    title: 'New Blog',
-    article: new Article({})
+  res.render('courses/new', {
+    title: 'New Course',
+    article: new Courses({})
   })
 }
 
@@ -64,18 +64,18 @@ exports.new = function(req, res){
  */
 
 exports.create = function (req, res) {
-  var article = new Article(req.body)
-  article.user = req.user
+  var course = new Courses(req.body)
+  course.user = req.user
 
-  article.uploadAndSave(req.files.image, function (err) {
+  course.uploadAndSave(req.files.image, function (err) {
     if (!err) {
       req.flash('success', 'Successfully created article!')
-      return res.redirect('/articles/'+article._id)
+      return res.redirect('/courses/'+course._id)
     }
 
-    res.render('articles/new', {
-      title: 'New Blog',
-      article: article,
+    res.render('courses/new', {
+      title: 'New courses',
+      article: course,
       errors: utils.errors(err.errors || err)
     })
   })
@@ -86,9 +86,9 @@ exports.create = function (req, res) {
  */
 
 exports.edit = function (req, res) {
-  res.render('articles/edit', {
-    title: 'Edit ' + req.article.title,
-    article: req.article
+  res.render('courses/edit', {
+    title: 'Edit ' + req.course.title,
+    course: req.course
   })
 }
 
@@ -105,8 +105,8 @@ exports.update = function(req, res){
       return res.redirect('/articles/' + article._id)
     }
 
-    res.render('articles/edit', {
-      title: 'Edit Blog',
+    res.render('courses/edit', {
+      title: 'Edit courses',
       article: article,
       errors: err.errors
     })
@@ -118,7 +118,7 @@ exports.update = function(req, res){
  */
 
 exports.show = function(req, res){
-  res.render('articles/show', {
+  res.render('courses/show', {
     title: req.article.title,
     article: req.article
   })
@@ -129,9 +129,9 @@ exports.show = function(req, res){
  */
 
 exports.destroy = function(req, res){
-  var article = req.article
-  article.remove(function(err){
+  var course = req.course
+  course.remove(function(err){
     req.flash('info', 'Deleted successfully')
-    res.redirect('/articles')
+    res.redirect('/courses')
   })
 }

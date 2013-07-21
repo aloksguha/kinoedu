@@ -4,7 +4,7 @@
  */
 
 var mongoose = require('mongoose')
-  , Article = mongoose.model('Article')
+  , Article = mongoose.model('Courses')
 
 /**
  * List items tagged with a tag
