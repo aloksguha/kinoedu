@@ -1,0 +1,24 @@
+
+header#header
+  .navbar.navbar-fixed-top(role='navigation')
+    .navbar-inner
+      .container
+        a.brand(href='/') KinoEdu
+        .nav-collapse.collapse
+          ul.nav
+
+          ul.nav.pull-right
+            li
+              a(href="/courses", title="Login") Courses
+            if (req.isAuthenticated())
+              li
+                a(href="/articles/new", title="new article") New
+              li
+                a(href="/users/"+req.user.id, title="Profile") Profile
+              li
+                a(href="/logout", title="logout") Logout
+            else
+              li
+                a(href="/login", title="Login") Login
+
+
